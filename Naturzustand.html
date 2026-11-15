@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ethik · Naturzustand des Menschen · Klasse 10</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-card: #020617;
+      --bg-soft: rgba(15, 23, 42, 0.9);
+      --border: rgba(148, 163, 184, 0.4);
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --neon-pink: #f472b6;
+      --neon-blue: #38bdf8;
+      --neon-green: #4ade80;
+      --neon-yellow: #fde047;
+      --neon-purple: #a855f7;
+      --radius-lg: 20px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(244, 114, 182, 0.35), transparent 55%),
+        radial-gradient(circle at 90% 0%, rgba(56, 189, 248, 0.45), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(74, 222, 128, 0.25), transparent 55%),
+        #020617;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 18px 12px 30px;
+    }
+
+    .page {
+      width: min(1120px, 100%);
+      backdrop-filter: blur(18px);
+      border-radius: 26px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+      box-shadow: 0 40px 80px rgba(15, 23, 42, 0.95);
+      padding: 22px 22px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(35px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .page::before {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, var(--neon-pink), transparent 60%);
+      top: -80px;
+      left: -60px;
+    }
+
+    .page::after {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, var(--neon-blue), transparent 60%);
+      bottom: -120px;
+      right: -60px;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .title-block {
+      max-width: 560px;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background-image: linear-gradient(90deg, #e5e7eb, var(--neon-pink), var(--neon-blue));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subject-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.4);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .subject-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--neon-green), transparent 45%);
+      box-shadow: 0 0 10px var(--neon-green);
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .subtitle strong {
+      color: #e5e7eb;
+    }
+
+    .progress-panel {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.95));
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 10px 12px 12px;
+      min-width: 220px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 0.82rem;
+    }
+
+    .progress-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .level-badges {
+      display: flex;
+      gap: 4px;
+    }
+
+    .badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--neon-pink);
+      box-shadow: 0 0 6px var(--neon-pink);
+    }
+
+    .progress-bar-wrapper {
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 3px;
+      margin-bottom: 3px;
+    }
+
+    .progress-bar-inner {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-yellow), var(--neon-green));
+      width: 0%;
+      transition: width 0.25s ease-out;
+      box-shadow: 0 0 14px rgba(244, 114, 182, 0.6);
+    }
+
+    .progress-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 16px 16px 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(244, 114, 182, 0.14), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(59, 130, 246, 0.14), transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(74, 222, 128, 0.1), transparent 60%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pill-level {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      text-transform: none;
+    }
+
+    .level-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .level-indicator-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      box-shadow: 0 0 8px var(--neon-blue);
+    }
+
+    .level-locked {
+      opacity: 0.4;
+      pointer-events: none;
+      filter: grayscale(0.4);
+    }
+
+    .level-locked .level-indicator-dot {
+      background: transparent;
+      box-shadow: none;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 6px 0 8px;
+    }
+
+    .info-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .sparkle {
+      font-size: 0.9rem;
+      color: var(--neon-yellow);
+    }
+
+    .sections {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.95));
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.86rem;
+    }
+
+    .section-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .section-title {
+      font-weight: 500;
+    }
+
+    .section-chev {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: transform 0.16s ease-out;
+    }
+
+    .section-header[aria-expanded="true"] .section-chev {
+      transform: rotate(90deg);
+    }
+
+    .section-body {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 12px;
+      transition: max-height 0.2s ease-out;
+    }
+
+    .section-body-inner {
+      padding: 4px 0 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .section-body-inner ul,
+    .section-body-inner ol {
+      padding-left: 18px;
+      margin: 6px 0;
+    }
+
+    .section-body-inner li {
+      margin: 2px 0;
+    }
+
+    .highlight-box {
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.06), rgba(8, 47, 73, 0.4));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      font-size: 0.84rem;
+      margin-top: 6px;
+    }
+
+    .highlight-box strong {
+      color: #e5e7eb;
+    }
+
+    .definition {
+      border-left: 3px solid var(--neon-yellow);
+      padding-left: 10px;
+      margin: 6px 0;
+      font-size: 0.86rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, rgba(244, 114, 182, 0.18), rgba(59, 130, 246, 0.25));
+      color: #f9fafb;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
+      margin-top: 6px;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.6);
+      border-color: var(--neon-pink);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-style: dashed;
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-icon {
+      font-size: 1rem;
+    }
+
+    .quiz {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+    }
+
+    .quiz h3 {
+      font-size: 0.9rem;
+      margin: 0 0 4px;
+    }
+
+    .quiz-question {
+      margin-bottom: 6px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .quiz-option {
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 8px;
+      transition: background 0.12s ease-out;
+    }
+
+    .quiz-option:hover {
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .quiz-option input[type="radio"] {
+      accent-color: var(--neon-pink);
+    }
+
+    .quiz-feedback {
+      font-size: 0.78rem;
+      margin-top: 4px;
+      min-height: 1em;
+    }
+
+    .feedback-correct {
+      color: var(--neon-green);
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+    }
+
+    .feedback-wrong {
+      color: #fb7185;
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .timeline {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.84rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 6px 10px;
+      align-items: baseline;
+    }
+
+    .timeline-year {
+      font-weight: 600;
+      color: #e5e7eb;
+      font-size: 0.82rem;
+    }
+
+    .timeline-label {
+      color: var(--neon-blue);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .timeline-text {
+      color: var(--text-muted);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 6px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: #000;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.55);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .reflection {
+      margin-top: 8px;
+      font-size: 0.84rem;
+    }
+
+    .reflection textarea {
+      width: 100%;
+      min-height: 80px;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      resize: vertical;
+    }
+
+    .reflection small {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .credits {
+      margin-top: 10px;
+      text-align: right;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title-block">
+        <div class="subject-pill">
+          <span class="subject-dot"></span>
+          <span>Ethik · Klasse 10</span>
+          <span>· Naturzustand des Menschen</span>
+        </div>
+        <h1>Naturzustand: Mensch ohne Gesellschaft?</h1>
+        <p class="subtitle">
+          In dieser interaktiven Einheit lernst du Schritt für Schritt, was man unter dem <strong>Naturzustand</strong> versteht,
+          welche berühmten <strong>Philosophen</strong> dazu Theorien entwickelt haben und warum das Thema heute noch wichtig ist.
+          <br />
+          Du arbeitest dich durch <strong>drei Levels</strong> – der nächste Level schaltet sich erst frei, wenn du den vorherigen geschafft hast.
+        </p>
+      </div>
+
+      <aside class="progress-panel">
+        <div class="progress-header">
+          <div>
+            <div class="progress-title">Dein Lernfortschritt</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Level 1 → 2 → 3</div>
+          </div>
+          <div class="level-badges">
+            <span class="badge" id="badge-l1"><span class="badge-dot"></span> L1</span>
+            <span class="badge" id="badge-l2">L2</span>
+            <span class="badge" id="badge-l3">L3</span>
+          </div>
+        </div>
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar-inner" id="progress-bar"></div>
+        </div>
+        <div class="progress-text">
+          <span id="progress-text">0 / 3 Levels abgeschlossen</span>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <!-- LEVEL 1: Einstieg & Begriff Naturzustand -->
+      <section class="card" id="level-1">
+        <div class="card-inner">
+          <div class="card-header-line">
+            <h2>
+              Level 1
+              <span class="pill-level">Warm-up · Was bedeutet "Naturzustand"?</span>
+            </h2>
+            <div class="level-indicator">
+              <span class="level-indicator-dot"></span>
+              <span>aktiv</span>
+            </div>
+          </div>
+
+          <p>
+            Stell dir vor, es gäbe keine Gesetze, keinen Staat und keine Polizei. Wie würden Menschen miteinander umgehen?
+            Wären sie eher friedlich oder eher brutal? Genau diese Frage steckt hinter dem philosophischen Begriff
+            <strong>"Naturzustand"</strong>.
+          </p>
+
+          <div class="info-strip">
+            <span class="sparkle">★</span>
+            <span>Deine Mission: Verstehe den Grundbegriff & ordne erste Alltagssituationen zu.</span>
+          </div>
+
+          <div class="sections">
+            <!-- Abschnitt: Definition -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="true">
+                <div class="section-header-left">
+                  <span class="section-tag">1</span>
+                  <span class="section-title">Was heißt "Naturzustand"?</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body" style="max-height: 420px;">
+                <div class="section-body-inner">
+                  <div class="definition">
+                    <strong>Definition (einfach):</strong><br />
+                    Der <strong>Naturzustand</strong> ist eine <em>gedachte</em> Situation, in der Menschen ohne Staat und feste Regeln
+                    leben. Philosoph:innen überlegen damit: Wie wäre der Mensch, wenn es keine Gesetze gäbe?
+                  </div>
+
+                  <p>
+                    Wichtig: Der Naturzustand ist keine genaue historische Beschreibung, sondern ein <strong>Denkexperiment</strong>.
+                    Man fragt sich: "Wie wären wir Menschen von unserem Wesen her?" – und nicht: "Wie war es wirklich früher?".
+                  </p>
+
+                  <div class="highlight-box">
+                    <strong>Merksatz:</strong> Naturzustand = Gedankenexperiment über den Menschen ohne staatliche Ordnung. Daraus
+                    leiten Philosophen ab, warum wir überhaupt einen <strong>Staat</strong> und <strong>Gesetze</strong> brauchen.
+                  </div>
+
+                  <div class="pill-row">
+                    <span class="pill">kein Staat</span>
+                    <span class="pill">keine Polizei</span>
+                    <span class="pill">keine Gerichte</span>
+                    <span class="pill">nur Menschen & ihre Bedürfnisse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Abschnitt: Alltagscheck & Mini-Quiz -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">2</span>
+                  <span class="section-title">Mini-Check: Alltagssituationen</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    Überlege bei den folgenden Aussagen, ob sie eher zum <strong>Naturzustand</strong> passen oder zu einer
+                    <strong>geordneten Gesellschaft</strong> mit Regeln.
+                  </p>
+
+                  <div class="quiz" data-quiz="l1-1">
+                    <h3>Frage 1</h3>
+                    <div class="quiz-question">"Wer stärker ist, nimmt sich einfach, was er will."</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l1-1-q1" value="a" />
+                        <span>passt eher zum Naturzustand</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l1-1-q1" value="b" />
+                        <span>passt eher zu einer geordneten Gesellschaft</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <div class="quiz" data-quiz="l1-2">
+                    <h3>Frage 2</h3>
+                    <div class="quiz-question">"Konflikte werden durch ein Gericht entschieden, das für alle gilt."</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l1-2-q1" value="a" />
+                        <span>passt eher zum Naturzustand</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l1-2-q1" value="b" />
+                        <span>passt eher zu einer geordneten Gesellschaft</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <button class="btn" data-check-quiz="level1">
+                    <span class="btn-icon">✔</span>
+                    Antworten prüfen & Level 1 abschließen
+                  </button>
+                  <div class="quiz-feedback" id="level1-overall"></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEVEL 2: Philosophische Modelle (Hobbes, Locke, Rousseau) -->
+      <section class="card level-locked" id="level-2">
+        <div class="card-inner">
+          <div class="card-header-line">
+            <h2>
+              Level 2
+              <span class="pill-level">Die großen Modelle: Hobbes · Locke · Rousseau</span>
+            </h2>
+            <div class="level-indicator">
+              <span class="level-indicator-dot"></span>
+              <span>gesperrt – zuerst Level 1</span>
+            </div>
+          </div>
+
+          <p>
+            Jetzt lernst du drei berühmte Philosophen kennen, die sehr unterschiedliche Vorstellungen vom Naturzustand des
+            Menschen hatten – und damit auch davon, wie ein <strong>gerechter Staat</strong> aussehen sollte.
+          </p>
+
+          <div class="info-strip">
+            <span class="sparkle">⚡</span>
+            <span>Deine Mission: Erkenne Unterschiede zwischen Hobbes, Locke und Rousseau.</span>
+          </div>
+
+          <div class="sections">
+            <!-- Hobbes -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">H</span>
+                  <span class="section-title">Thomas Hobbes: "Krieg aller gegen alle"</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    <strong>Thomas Hobbes</strong> (1588–1679) hatte eine eher pessimistisches Menschenbild. Für ihn ist der
+                    Naturzustand ein gefährlicher Ort.
+                  </p>
+                  <ul>
+                    <li>Menschen sind ungefähr gleich stark und haben ähnliche Bedürfnisse.</li>
+                    <li>Alle wollen ihr eigenes Leben sichern und ihre Wünsche erfüllen.</li>
+                    <li>Ohne Regeln kommt es leicht zu Misstrauen, Angst und Gewalt.</li>
+                  </ul>
+                  <div class="highlight-box">
+                    <strong>Berühmtes Zitat (sinngemäß):</strong> Im Naturzustand herrscht ein "Krieg aller gegen alle".
+                    Deshalb brauchen wir einen starken Staat, der Sicherheit garantiert – auch wenn er viel Macht bekommt.
+                  </div>
+                  <div class="pill-row">
+                    <span class="pill">Mensch = eher egoistisch</span>
+                    <span class="pill">Naturzustand = unsicher</span>
+                    <span class="pill">Staat = starker Herrscher (Leviathan)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Locke -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">L</span>
+                  <span class="section-title">John Locke: Naturrechte &amp; Eigentum</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    <strong>John Locke</strong> (1632–1704) war deutlich optimistischer.
+                  </p>
+                  <ul>
+                    <li>Menschen haben von Natur aus <strong>Rechte</strong>: Leben, Freiheit, Eigentum.</li>
+                    <li>Im Naturzustand gibt es noch keinen Staat, aber eine Art moralisches Gesetz (Vernunft).</li>
+                    <li>Problem: Es fehlt eine neutrale Stelle, die bei Streit entscheidet.</li>
+                  </ul>
+                  <div class="highlight-box">
+                    <strong>Idee:</strong> Menschen schließen einen Vertrag und gründen einen Staat, um ihre natürlichen Rechte besser zu
+                    schützen. Der Staat darf diese Rechte nicht zerstören.
+                  </div>
+                  <div class="pill-row">
+                    <span class="pill">Naturzustand = grundsätzlich möglich</span>
+                    <span class="pill">wichtige Naturrechte</span>
+                    <span class="pill">Staat = Schützer der Rechte</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rousseau -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">R</span>
+                  <span class="section-title">Jean-Jacques Rousseau: Der "gute Wilde"</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    <strong>Jean-Jacques Rousseau</strong> (1712–1778) dachte noch einmal anders.
+                  </p>
+                  <ul>
+                    <li>Im ursprünglichen Naturzustand sind Menschen eher <strong>friedlich</strong> und mitleidsfähig.</li>
+                    <li>Probleme entstehen erst, wenn Eigentum, Konkurrenz und Ungleichheit wachsen.</li>
+                    <li>Die Gesellschaft kann Menschen auch <strong>verderben</strong>.</li>
+                  </ul>
+                  <div class="highlight-box">
+                    <strong>Idee:</strong> Ein gerechter Staat muss die <strong>allgemeine Willensbildung</strong> (volonté générale)
+                    beachten und darf nicht nur die Interessen der Reichen vertreten.
+                  </div>
+                  <div class="pill-row">
+                    <span class="pill">Naturzustand = eher friedlich</span>
+                    <span class="pill">Gesellschaft kann ungerecht machen</span>
+                    <span class="pill">Staat = Ausdruck des Gemeinwillens</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Vergleichsquiz -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">Q</span>
+                  <span class="section-title">Quiz: Wer würde das sagen?</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <div class="quiz" data-quiz="l2-1">
+                    <h3>Frage 1</h3>
+                    <div class="quiz-question">"Ohne starken Staat sind Menschen ständig in Gefahr – das Leben ist unsicher."</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-1-q1" value="a" />
+                        <span>Thomas Hobbes</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-1-q1" value="b" />
+                        <span>John Locke</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-1-q1" value="c" />
+                        <span>Jean-Jacques Rousseau</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <div class="quiz" data-quiz="l2-2">
+                    <h3>Frage 2</h3>
+                    <div class="quiz-question">"Menschen haben von Natur aus Rechte, die der Staat nur schützen soll."</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-2-q1" value="a" />
+                        <span>Thomas Hobbes</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-2-q1" value="b" />
+                        <span>John Locke</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-2-q1" value="c" />
+                        <span>Jean-Jacques Rousseau</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <div class="quiz" data-quiz="l2-3">
+                    <h3>Frage 3</h3>
+                    <div class="quiz-question">"Eigentlich sind Menschen im Ursprung eher gut – die Gesellschaft macht vieles kaputt."</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-3-q1" value="a" />
+                        <span>Thomas Hobbes</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-3-q1" value="b" />
+                        <span>John Locke</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l2-3-q1" value="c" />
+                        <span>Jean-Jacques Rousseau</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <button class="btn" data-check-quiz="level2" disabled>
+                    <span class="btn-icon">✔</span>
+                    Antworten prüfen & Level 2 abschließen
+                  </button>
+                  <div class="quiz-feedback" id="level2-overall"></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEVEL 3: Heutige Relevanz & eigene Position -->
+      <section class="card level-locked" id="level-3">
+        <div class="card-inner">
+          <div class="card-header-line">
+            <h2>
+              Level 3
+              <span class="pill-level">Heute & du: Warum der Naturzustand noch zählt</span>
+            </h2>
+            <div class="level-indicator">
+              <span class="level-indicator-dot"></span>
+              <span>gesperrt – zuerst Level 1 & 2</span>
+            </div>
+          </div>
+
+          <p>
+            Du kennst jetzt den Begriff Naturzustand und drei Modelle. Zum Schluss geht es darum, warum diese Ideen heute
+            noch in politischen Diskussionen und in deinem eigenen Leben eine Rolle spielen.
+          </p>
+
+          <div class="info-strip">
+            <span class="sparkle">✨</span>
+            <span>Deine Mission: Verknüpfe Philosophie mit aktuellen Themen & bilde dir eine eigene Position.</span>
+          </div>
+
+          <div class="sections">
+            <!-- Heutige Relevanz -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">1</span>
+                  <span class="section-title">Warum ist das heute noch wichtig?</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    Die Frage, ob Menschen eher egoistisch oder eher kooperativ sind, taucht überall auf:
+                  </p>
+                  <ul>
+                    <li>In Diskussionen über <strong>Sicherheit</strong> und <strong>Überwachung</strong>.</li>
+                    <li>Bei Themen wie <strong>soziale Gerechtigkeit</strong> und <strong>Eigentum</strong>.</li>
+                    <li>In Konflikten zwischen <strong>Freiheit</strong> und <strong>staatlicher Kontrolle</strong>.</li>
+                  </ul>
+
+                  <div class="highlight-box">
+                    Wenn Politiker:innen z. B. für schärfere Gesetze argumentieren, steckt oft die Angst vor einem
+                    "Hobbes-Naturzustand" dahinter. Wenn für Grundrechte, Menschenwürde und soziale Gerechtigkeit argumentiert
+                    wird, schwingen Gedanken von <strong>Locke</strong> und <strong>Rousseau</strong> mit.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Eigenes Ranking & Reflexion -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">2</span>
+                  <span class="section-title">Mit wem stimmst du am meisten überein?</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    Wähle aus, welche Sicht auf den Menschen dir am plausibelsten erscheint.
+                  </p>
+
+                  <div class="quiz" data-quiz="l3-1">
+                    <h3>Deine Tendenz</h3>
+                    <div class="quiz-question">Welche Aussage kommt deiner eigenen Meinung am nächsten?</div>
+                    <div class="quiz-options">
+                      <label class="quiz-option">
+                        <input type="radio" name="l3-1-q1" value="a" />
+                        <span>Menschen brauchen sehr starke Regeln, sonst wird es gefährlich. (Hobbes)</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l3-1-q1" value="b" />
+                        <span>Menschen haben von Natur aus Rechte; der Staat soll sie vor allem schützen. (Locke)</span>
+                      </label>
+                      <label class="quiz-option">
+                        <input type="radio" name="l3-1-q1" value="c" />
+                        <span>Menschen sind eigentlich eher gut; Ungerechtigkeit entsteht durch schlechte Strukturen. (Rousseau)</span>
+                      </label>
+                    </div>
+                    <div class="quiz-feedback" data-feedback></div>
+                  </div>
+
+                  <div class="reflection">
+                    <p><strong>Reflexion (kurz):</strong></p>
+                    <textarea placeholder="Notiere hier in 3–5 Sätzen, warum du dich so entschieden hast."></textarea>
+                    <small>Hinweis: Diese Eingabe wird nicht gespeichert – sie hilft dir beim Nachdenken und für ein späteres Gespräch oder eine Abgabe.</small>
+                  </div>
+
+                  <button class="btn" data-check-quiz="level3" disabled>
+                    <span class="btn-icon">★</span>
+                    Level 3 abschließen & Badge freischalten
+                  </button>
+                  <div class="quiz-feedback" id="level3-overall"></div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Optional: Video / aktuelles Beispiel -->
+            <article class="section" data-section>
+              <button class="section-header" aria-expanded="false">
+                <div class="section-header-left">
+                  <span class="section-tag">3</span>
+                  <span class="section-title">Optional: Video-Impuls</span>
+                </div>
+                <span class="section-chev">▶</span>
+              </button>
+              <div class="section-body">
+                <div class="section-body-inner">
+                  <p>
+                    Schau dir – wenn Zeit ist – ein Video zu Naturzustand und Gesellschaftsvertrag an:
+                  </p>
+                  <div class="video-wrapper">
+                    <!-- Platzhalter-Video, z. B. zu Gesellschaftsvertrag/Naturzustand -->
+                    <iframe
+                      src="https://youtu.be/IzIPp2TkSqI?si=9i_pchshB0_YYLSg"
+                      title="Naturzustand & Gesellschaftsvertrag (Beispielvideo)"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Side Panel: Zeitleiste & Arbeitsauftrag -->
+      <aside class="side-panel">
+        <section class="card">
+          <div class="card-inner">
+            <h2>Wer hat über den Naturzustand nachgedacht?</h2>
+            <p>
+              Ein kurzer Überblick, wann die wichtigsten Denker gelebt haben. Du kannst diese Infos nutzen, um die Modelle
+              geschichtlich einzuordnen.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">17. Jh.</div>
+                <div>
+                  <div class="timeline-label">Thomas Hobbes</div>
+                  <div class="timeline-text">Englischer Philosoph, erlebt Bürgerkrieg – betont Sicherheit & starken Staat.</div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">17. Jh.</div>
+                <div>
+                  <div class="timeline-label">John Locke</div>
+                  <div class="timeline-text">
+                    Englischer Philosoph, wichtig für Ideen von Menschenrechten und moderner Demokratie.
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">18. Jh.</div>
+                <div>
+                  <div class="timeline-label">Jean-Jacques Rousseau</div>
+                  <div class="timeline-text">Französischsprachiger Denker, betont Freiheit, Gleichheit und Gemeinwohl.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chips-row">
+              <span class="chip">Gesellschaftsvertrag</span>
+              <span class="chip">Menschenbild</span>
+              <span class="chip">Rechte & Pflichten</span>
+              <span class="chip">Gerechtigkeit</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-inner">
+            <h2>Arbeitsauftrag</h2>
+            <p>
+              Bearbeite die drei Levels nacheinander. Achte darauf, die Quizfragen ernsthaft zu beantworten – sie helfen dir
+              beim Verstehen.
+            </p>
+            <ol style="font-size:0.88rem; color:var(--text-muted);">
+              <li>Level 1: Lies die Definition & bearbeite das Mini-Quiz.</li>
+              <li>Level 2: Lies die drei Modelle und löse das Zuordnungs-Quiz.</li>
+              <li>Level 3: Übertrage das Thema auf heute und überlege, mit wem du am ehesten übereinstimmst.</li>
+            </ol>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;">
+              Mögliche Abgabe (z. B. Hausaufgabe): Erstelle eine halbe bis ganze Seite, in der du die drei Modelle kurz
+              zusammenfasst und deine eigene Position begründest.
+            </p>
+          </div>
+        </section>
+
+        <div class="credits">
+          Interaktive Ethik-Einheit · Naturzustand des Menschen · Klasse 10
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Progress & Level Locking
+    let completedLevels = 0;
+
+    const level1Section = document.getElementById('level-1');
+    const level2Section = document.getElementById('level-2');
+    const level3Section = document.getElementById('level-3');
+
+    const level2Button = level2Section.querySelector('[data-check-quiz="level2"]');
+    const level3Button = level3Section.querySelector('[data-check-quiz="level3"]');
+
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const badgeL1 = document.getElementById('badge-l1');
+    const badgeL2 = document.getElementById('badge-l2');
+    const badgeL3 = document.getElementById('badge-l3');
+
+    function updateProgressDisplay() {
+      const percent = (completedLevels / 3) * 100;
+      progressBar.style.width = percent + '%';
+      progressText.textContent = completedLevels + ' / 3 Levels abgeschlossen';
+
+      // Badges visuell anpassen
+      badgeL1.style.borderColor = completedLevels >= 1 ? 'var(--neon-green)' : 'rgba(148,163,184,0.45)';
+      badgeL1.style.boxShadow = completedLevels >= 1 ? '0 0 10px rgba(74,222,128,0.8)' : 'none';
+
+      badgeL2.style.borderColor = completedLevels >= 2 ? 'var(--neon-green)' : 'rgba(148,163,184,0.45)';
+      badgeL2.style.boxShadow = completedLevels >= 2 ? '0 0 10px rgba(74,222,128,0.8)' : 'none';
+
+      badgeL3.style.borderColor = completedLevels >= 3 ? 'var(--neon-green)' : 'rgba(148,163,184,0.45)';
+      badgeL3.style.boxShadow = completedLevels >= 3 ? '0 0 10px rgba(74,222,128,0.8)' : 'none';
+    }
+
+    function unlockLevel(levelNumber) {
+      if (levelNumber === 2) {
+        level2Section.classList.remove('level-locked');
+        const indicator = level2Section.querySelector('.level-indicator span:last-child');
+        if (indicator) indicator.textContent = 'aktiv';
+        level2Button.disabled = false;
+      } else if (levelNumber === 3) {
+        level3Section.classList.remove('level-locked');
+        const indicator = level3Section.querySelector('.level-indicator span:last-child');
+        if (indicator) indicator.textContent = 'aktiv';
+        level3Button.disabled = false;
+      }
+    }
+
+    // Accordion Sections
+    document.querySelectorAll('[data-section]').forEach((section) => {
+      const header = section.querySelector('.section-header');
+      const body = section.querySelector('.section-body');
+      header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', String(!expanded));
+        if (!expanded) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        } else {
+          body.style.maxHeight = 0;
+        }
+      });
+    });
+
+    // Quiz Logic
+    const quizSolutions = {
+      // Level 1
+      'l1-1': 'a',
+      'l1-2': 'b',
+      // Level 2
+      'l2-1': 'a',
+      'l2-2': 'b',
+      'l2-3': 'c',
+      // Level 3: hier gibt es keine "richtige" Lösung, aber wir erwarten eine Auswahl
+    };
+
+    function checkQuizForLevel(levelKey) {
+      let quizKeys = [];
+      let overallFeedbackEl = null;
+
+      if (levelKey === 'level1') {
+        quizKeys = ['l1-1', 'l1-2'];
+        overallFeedbackEl = document.getElementById('level1-overall');
+      } else if (levelKey === 'level2') {
+        quizKeys = ['l2-1', 'l2-2', 'l2-3'];
+        overallFeedbackEl = document.getElementById('level2-overall');
+      } else if (levelKey === 'level3') {
+        quizKeys = ['l3-1'];
+        overallFeedbackEl = document.getElementById('level3-overall');
+      }
+
+      let allCorrect = true;
+      let allAnswered = true;
+
+      quizKeys.forEach((quizKey) => {
+        const quiz = document.querySelector('[data-quiz="' + quizKey + '"]');
+        if (!quiz) return;
+
+        const feedbackElement = quiz.querySelector('[data-feedback]');
+        const inputs = quiz.querySelectorAll('input[type="radio"]');
+        let selected = null;
+        inputs.forEach((input) => {
+          if (input.checked) selected = input.value;
+        });
+
+        if (!selected) {
+          allAnswered = false;
+          if (feedbackElement) {
+            feedbackElement.textContent = 'Bitte wähle eine Antwort aus.';
+            feedbackElement.className = 'quiz-feedback feedback-wrong';
+          }
+          return;
+        }
+
+        // Für Level 3 gibt es keine richtige / falsche Antwort
+        if (quizKey === 'l3-1') {
+          if (feedbackElement) {
+            feedbackElement.textContent = 'Danke für deine Einschätzung – sie ist die Grundlage für deine eigene Position.';
+            feedbackElement.className = 'quiz-feedback feedback-correct';
+          }
+          return;
+        }
+
+        if (selected === quizSolutions[quizKey]) {
+          if (feedbackElement) {
+            feedbackElement.textContent = 'Richtig!';
+            feedbackElement.className = 'quiz-feedback feedback-correct';
+          }
+        } else {
+          allCorrect = false;
+          if (feedbackElement) {
+            feedbackElement.textContent = 'Nicht ganz. Schau dir den Text noch einmal an.';
+            feedbackElement.className = 'quiz-feedback feedback-wrong';
+          }
+        }
+      });
+
+      if (!overallFeedbackEl) return;
+
+      if (!allAnswered) {
+        overallFeedbackEl.textContent = 'Bitte beantworte alle Fragen.';
+        overallFeedbackEl.className = 'quiz-feedback feedback-wrong';
+        return;
+      }
+
+      if (levelKey === 'level3') {
+        // Level 3: nur Auswahl und Reflexion ist wichtig
+        overallFeedbackEl.textContent = 'Level 3 geschafft! Nimm dir Zeit für deine schriftliche Reflexion.';
+        overallFeedbackEl.className = 'quiz-feedback feedback-correct';
+        if (completedLevels < 3) {
+          completedLevels = 3;
+          updateProgressDisplay();
+        }
+        return;
+      }
+
+      if (allCorrect) {
+        overallFeedbackEl.textContent = 'Super! Du hast alle Fragen richtig beantwortet – Level abgeschlossen.';
+        overallFeedbackEl.className = 'quiz-feedback feedback-correct';
+
+        if (levelKey === 'level1' && completedLevels < 1) {
+          completedLevels = 1;
+          unlockLevel(2);
+        } else if (levelKey === 'level2' && completedLevels < 2) {
+          completedLevels = 2;
+          unlockLevel(3);
+        }
+        updateProgressDisplay();
+      } else {
+        overallFeedbackEl.textContent = 'Es ist noch nicht alles richtig. Überarbeite deine Antworten und versuche es erneut.';
+        overallFeedbackEl.className = 'quiz-feedback feedback-wrong';
+      }
+    }
+
+    document.querySelectorAll('[data-check-quiz]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const levelKey = btn.getAttribute('data-check-quiz');
+        checkQuizForLevel(levelKey);
+      });
+    });
+
+    // Initialer Fortschritt
+    updateProgressDisplay();
+  </script>
+</body>
+</html>
